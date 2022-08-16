@@ -1,9 +1,4 @@
-#include<bits/stdc++.h>
-#define LLI  long long int
-#define MAX 32000
-using namespace std;
-
-LLI  seg_sieve(LLI l,LLI r)
+void seg_sieve(LLI l,LLI r)
 {
     //sieve of eratosthenes
     vector<LLI>prime;
@@ -67,14 +62,4 @@ LLI  seg_sieve(LLI l,LLI r)
 
     }
 
-}
-int main(){
-    LLI t; 
-    cin>>t; 
-    while(t--){
-        LLI a,b; 
-        cin>>a>>b; 
-        seg_sieve(a,b); 
-        cout<<endl; 
-    }
 }
