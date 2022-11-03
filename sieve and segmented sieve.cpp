@@ -1,25 +1,25 @@
-void seg_sieve(LLI l,LLI r)
+void seg_sieve(ll l,ll r)
 {
     //sieve of eratosthenes
-    vector<LLI>prime;
+    vector<ll>prime;
     vector<char>isprime(MAX+1,true);
     isprime[0]=false;
     isprime[1]=false;
     isprime[2]=true;
 
-    for(LLI i=3; i*i<=MAX; i+=2)
+    for(ll i=3; i*i<=MAX; i+=2)
     {
 
         if(isprime[i])
         {
-            for(LLI j=i*i; j<=MAX; j+=i)
+            for(ll j=i*i; j<=MAX; j+=i)
             {
                 isprime[j]=false;
             }
         }
     }
     prime.push_back(2);
-    for(LLI i=3; i<=MAX; i+=2)
+    for(ll i=3; i<=MAX; i+=2)
     {
         if(isprime[i]==true)
         {
@@ -31,17 +31,17 @@ void seg_sieve(LLI l,LLI r)
 
     vector<char>isPrime(r-l+1,true);
 
-    for(LLI i=0; prime[i]*prime[i]<=r; i++)
+    for(ll i=0; prime[i]*prime[i]<=r; i++)
     {
 
-        LLI base,cp;
+        ll base,cp;
         cp=prime[i];
         base=(l/cp)*cp;
         if(base<l)
         {
             base=base+cp;
         }
-        for(LLI j=base; j<=r; j+=cp)
+        for(ll j=base; j<=r; j+=cp)
         {
             isPrime[j-l]=false;
         }
@@ -52,7 +52,7 @@ void seg_sieve(LLI l,LLI r)
 
     }
     if(l==1) isPrime[0]=false;
-    for(LLI i=0; i<r-l+1; i++)
+    for(ll i=0; i<r-l+1; i++)
     {
         if(isPrime[i]==true)
         {
