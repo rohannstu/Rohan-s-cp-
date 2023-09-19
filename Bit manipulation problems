@@ -1,0 +1,39 @@
+https://www.hackerrank.com/contests/intra-nstu-junior-programming-contest-august-2023/challenges/reelaax/problem
+
+solve: 
+
+#include <bits/stdc++.h>   
+#define ll long long int  
+using namespace std;   
+
+int main(){ 
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    vector<int> number_of_bit(32);
+    for (int i = 0; i < n; i++) {
+      for (ll j = 0; j < 32; j++) {
+        // x = 2 ^ j;
+        ll x = 1ll << j;
+        //checking j-th bit is on or not
+        if ((a[i] & x)) number_of_bit[j]++;
+      }
+    }
+    int q;
+    cin >> q;
+    while(q--) {
+      ll y;
+      cin >> y;
+      ll sum = 0;
+      for (ll j = 0; j < 32; j++) {
+        ll x = 1ll << j;
+        //checking j-th bit is on or not
+        // if it is on,  then on bit turned off and off bit turned on
+        // otherwise bits remain same
+        if ((y & x)) number_of_bit[j] = n - number_of_bit[j];
+        sum += number_of_bit[j] * x;
+      }
+      cout << sum << endl;
+}
+}
